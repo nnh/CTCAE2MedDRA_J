@@ -2,7 +2,7 @@
 # readxlのインストールが必要
 # install.packages('readxl')
 # *** set path ***
-prtpath <- "//aronas/Projects/※閲覧移動用 日付を必ずファイル・フォルダ名につける/MedDRA/V20.1"
+prtpath <- "/Volumes/Projects/NMC ISR 情報システム研究室/MedDRA/V22.1"
 
 library("readxl")
 # *** constant ***
@@ -51,7 +51,7 @@ if (length(file_list) == 1) {
       # 読み込み対象ファイル
       if (grep(kMedDRACSV, file_list) > 0) {
         llt_jpath <- paste0(meddrapath, "/", kMedDRACSV)
-        df2 <- read.csv(llt_jpath, as.is=T, sep="$", header=F)
+        df2 <- read.csv(llt_jpath, as.is=T, sep="$", header=F, fileEncoding="cp932")
         # 必要なレコード、列のみ抽出 3列目がYのものだけ
         df2 <- df2[c(1, 2, 3)]
         names(df2) <- c(kColCode, kColKanji, kColJcurr)
